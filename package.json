@@ -1,0 +1,33 @@
+{
+  "name": "RNGQLClient",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "jest-expo": "^27.0.0",
+    "react-native-scripts": "1.7.0",
+    "react-test-renderer": "16.0.0-beta.5"
+  },
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "scripts": {
+    "start": "react-native-scripts start",
+    "eject": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "test": "node node_modules/jest/bin/jest.js --watch"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "apollo-client-preset": "^1.0.2",
+    "apollo-link-context": "^1.0.0",
+    "expo": "^27.0.0",
+    "graphql": "^0.11.7",
+    "graphql-tag": "^2.5.0",
+    "native-base": "^2.3.3",
+    "react": "16.3.1",
+    "react-apollo": "^2.0.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-27.0.0.tar.gz",
+    "react-navigation": "1.5.11"
+  }
+}
