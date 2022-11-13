@@ -1,5 +1,7 @@
 import React from 'react';
 import { Container, Button, Content, Form, Item, Input, Text } from 'native-base';
+import {graphql} from "react-apollo";
+import gql from "graphql-tag";
 
 class Login extends React.Component {
   constructor(props) {
@@ -33,7 +35,19 @@ class Login extends React.Component {
     }
     this.setState({ passwordError: false });
 
-    return this.props.screenProps.changeLoginState(true);
+    this.props
+        .login(email, password)
+        .then(({ data }) => {
+          return this.props.screenProps.changeLoginState(true, data.login.jwt);
+        })
+        .catch(e => {
+          if (/email/i.test(e.message)) {
+            this.setState({emailError: true});
+          }
+          if (/password/i.test(e.message)) {
+            this.setState({passwordError: true});
+          }
+        })
   };
 
   render() {
@@ -71,4 +85,19 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default graphql(
+    gql`
+      mutation LogIn($email: String!, $password: String!){
+       login(email: $email, password: $password){
+        _id
+        email
+        jwt
+       }
+     }
+    `,
+    {
+      props: ({ mutate }) => ({
+        login: (email, password) => mutate({variables: {email, password}})
+      }),
+    }
+)(Login);
