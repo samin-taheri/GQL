@@ -21,6 +21,9 @@
   "dependencies": {
     "apollo-client-preset": "^1.0.2",
     "apollo-link-context": "^1.0.0",
+    "appcenter": "4.4.5",
+    "appcenter-analytics": "4.4.5",
+    "appcenter-crashes": "4.4.5",
     "expo": "^27.0.0",
     "graphql": "^0.11.7",
     "graphql-tag": "^2.5.0",
